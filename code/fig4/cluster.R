@@ -414,6 +414,3 @@ print(p)
 
 
 
-# 7. 保存结果
-write.csv(consistency_results, "bootstrap_clustering_consistency_with_jaccard.csv", row.names = FALSE)
-
