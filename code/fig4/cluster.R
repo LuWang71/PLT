@@ -139,8 +139,6 @@ n_iterations <- 50
 fungi_genera <- colnames(fun0)
 bacteria_genera <- colnames(bac0)  
 
-cat("真菌属数量:", length(fungi_genera), "\n")
-cat("细菌属数量:", length(bacteria_genera), "\n")
 
 fungi_groups <- list(
   fungi_1 = fungi_1,
