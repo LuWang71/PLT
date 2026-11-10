@@ -26,7 +26,6 @@ upset(
 
 )
 
-# 提取各个交集
 intersection1 <- rownames(numeric_matrix[numeric_matrix[, "p_w_wo_t0"] == 1 
                                             & numeric_matrix[, "p_w_wo_t1"] == 1
                                             & numeric_matrix[, "p_w_wo_t21"] == 1
@@ -42,7 +41,7 @@ library(pheatmap)
 map = data[data$key %in% intersection1,]
 rownames(map) = map$key
 map = map[,c(10:16)]
-#map = map[,c(3:9)]
+
 map = na.omit(map)
 map = map[rowSums(map[1:7])>0,]
 aaa = map
