@@ -39,9 +39,6 @@ rownames(df) = gsub('-','_',rownames(df))
 patterns <- c("\\[", "\\]", "\\(", "\\)", "\\.", "\\'", "\\/", "\\:", "\\=", "\\+")
 rownames(df) <- Reduce(function(x, pattern) gsub(pattern, "", x), patterns, rownames(df) )
 
-
-bac = read.delim('./fig2/new/细菌数据.txt')
-fun = read.delim('./fig2/new/真菌数据.txt')
 info = rbind(bac,fun)
 info$fdr = p.adjust(info$kw_pvalue)
 info = info[info$key %in% rownames(df),]
@@ -64,7 +61,6 @@ mt <- microtable$new(sample_table = group, otu_table = df, tax_table = tax)
 mt
 
 
-#--------------------------group network---------------------------------------------------------
 networks <- list()
 
 # W_T0
