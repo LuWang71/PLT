@@ -8,7 +8,6 @@ state_all <- dat_long %>%
                             ordered = TRUE)) %>%
   filter(!is.na(Timepoint), Timepoint %in% tp_levels)
 
-# 列联表
 tab_all <- table(state_all$Timepoint, state_all$Assigned_CST_uncertain)
 
 tab_all
