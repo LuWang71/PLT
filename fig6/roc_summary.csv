@@ -1,0 +1,60 @@
+Panel,Feature_set,Cohort,Model,Balance,AUROC
+A,Core-Microbes,Discovery,RF,Balanced,0.5914440923494794
+A,Core-Microbes,Discovery,RF,Unbalanced,0.6363518422418266
+A,Core-Microbes,Discovery,GBM,Balanced,0.4970574920778633
+A,Core-Microbes,Discovery,GBM,Unbalanced,0.6058640373637779
+A,Core-Microbes,Discovery,XGB,Balanced,0.4567677682209144
+A,Core-Microbes,Discovery,XGB,Unbalanced,0.6009340944473275
+A,Core-Microbes,Discovery,Lasso,Balanced,0.5991398822996831
+A,Core-Microbes,Discovery,Lasso,Unbalanced,0.5944473274519979
+A,Core-Microbes,Discovery,SVM,Balanced,0.4477138976912629
+A,Core-Microbes,Discovery,SVM,Unbalanced,0.5384016606123507
+A,Core-Microbes,Discovery,QDA,Balanced,0.7170665459483929
+A,Core-Microbes,Discovery,QDA,Unbalanced,0.6022314478463935
+A,Core-Microbes,Discovery,Logistic Regression,Balanced,0.6736079674060661
+A,Core-Microbes,Discovery,Logistic Regression,Unbalanced,0.678386092371562
+E,Clinical indicators,Discovery,RF,Balanced,0.4610683567224989
+E,Clinical indicators,Discovery,RF,Unbalanced,0.5251686559418786
+E,Clinical indicators,Discovery,GBM,Balanced,0.4400181077410593
+E,Clinical indicators,Discovery,GBM,Unbalanced,0.5487804878048781
+E,Clinical indicators,Discovery,XGB,Balanced,0.5246717971933001
+E,Clinical indicators,Discovery,XGB,Unbalanced,0.5342501297353399
+E,Clinical indicators,Discovery,Lasso,Balanced,0.4997736532367587
+E,Clinical indicators,Discovery,Lasso,Unbalanced,0.4974052932018682
+E,Clinical indicators,Discovery,SVM,Balanced,0.5640561339972838
+E,Clinical indicators,Discovery,SVM,Unbalanced,0.564608199273482
+E,Clinical indicators,Discovery,QDA,Balanced,0.5857854232684472
+E,Clinical indicators,Discovery,QDA,Unbalanced,0.608718214841723
+E,Clinical indicators,Discovery,Logistic Regression,Balanced,0.6093254866455409
+E,Clinical indicators,Discovery,Logistic Regression,Unbalanced,0.6224701608718215
+C,Core-Metabolites,Discovery,RF,Unbalanced,0.6797297297297298
+D,Core-Metabolites,Validation,RF,Unbalanced,0.828125
+C,Core-Metabolites,Discovery,RF,Balanced,0.6900900900900901
+D,Core-Metabolites,Validation,RF,Balanced,0.71875
+C,Core-Metabolites,Discovery,XGB,Unbalanced,0.7018018018018017
+D,Core-Metabolites,Validation,XGB,Unbalanced,0.78125
+C,Core-Metabolites,Discovery,XGB,Balanced,0.7153153153153153
+D,Core-Metabolites,Validation,XGB,Balanced,0.75
+C,Core-Metabolites,Discovery,GBM,Unbalanced,0.5801801801801801
+D,Core-Metabolites,Validation,GBM,Unbalanced,0.84375
+C,Core-Metabolites,Discovery,GBM,Balanced,0.5612612612612613
+D,Core-Metabolites,Validation,GBM,Balanced,0.75
+C,Core-Metabolites,Discovery,Lasso,Unbalanced,0.8450450450450451
+D,Core-Metabolites,Validation,Lasso,Unbalanced,0.8020833333333334
+C,Core-Metabolites,Discovery,Lasso,Balanced,0.8423423423423424
+D,Core-Metabolites,Validation,Lasso,Balanced,0.8333333333333333
+C,Core-Metabolites,Discovery,Logistic Regression,Unbalanced,0.8522522522522522
+D,Core-Metabolites,Validation,Logistic Regression,Unbalanced,0.8020833333333334
+C,Core-Metabolites,Discovery,Logistic Regression,Balanced,0.8441441441441442
+D,Core-Metabolites,Validation,Logistic Regression,Balanced,0.8229166666666667
+C,Core-Metabolites,Discovery,QDA,Unbalanced,0.7126126126126127
+D,Core-Metabolites,Validation,QDA,Unbalanced,0.9791666666666666
+C,Core-Metabolites,Discovery,QDA,Balanced,0.6855855855855856
+D,Core-Metabolites,Validation,QDA,Balanced,0.9375
+C,Core-Metabolites,Discovery,SVM,Unbalanced,0.727027027027027
+D,Core-Metabolites,Validation,SVM,Unbalanced,0.8958333333333334
+C,Core-Metabolites,Discovery,SVM,Balanced,0.7153153153153153
+D,Core-Metabolites,Validation,SVM,Balanced,0.84375
+B,Core-Microbes,Validation,QDA,Balanced,0.9166666666666667
+F,Clinical indicators,Validation,Logistic Regression,Balanced,0.6060606060606061
+F,Clinical indicators,Validation,Logistic Regression,Unbalanced,0.5757575757575758

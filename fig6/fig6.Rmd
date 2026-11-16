@@ -1,0 +1,108 @@
+---
+title: "Figure 6. Prediction of postoperative infection"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    code_folding: show
+    self_contained: true
+---
+
+ROC curves are drawn from the supplied coordinates and AUROC tables. No model is trained or selected here. Panel F uses the existing 17-patient validation result (6 infected, 11 non-infected); it is not the 20-patient analysis. Both versions of the clinical predictions remain available in data/.
+
+Open this file in RStudio and click **Knit**, or run `rmarkdown::render("fig6/fig6.Rmd")` from the repository root. Tables are read from `data/`; PDF and PNG files are written to `plots/`.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=TRUE, error=FALSE,
+                      fig.width=10, fig.height=6, out.width="100%", dpi=120)
+dir.create("plots", showWarnings=FALSE)
+```
+
+## Input files
+
+```{r inputs, echo=FALSE}
+knitr::kable(data.frame(File=list.files("data")), col.names="File")
+```
+
+
+## Plot settings
+
+```{r figure6-section1}
+library(ggplot2)
+library(patchwork)
+# Run scripts from the Figure folder. All inputs are final plotting tables.
+read_table <- function(name) read.csv(file.path("data", name), encoding="UTF-8", check.names=FALSE)
+figure_theme <- theme_bw(base_size=10, base_family="Arial") +
+  theme(panel.grid=element_blank(), panel.border=element_rect(colour="black", fill=NA, linewidth=0.7),
+        strip.background=element_blank(), legend.position="bottom")
+theme_set(figure_theme)
+save_plot <- function(p, name, width, height) {
+  dir.create("plots", showWarnings=FALSE)
+  ggsave(file.path("plots", paste0(name, ".pdf")), p, device=cairo_pdf, width=width, height=height, units="mm")
+  ggsave(file.path("plots", paste0(name, ".png")), p, device=ragg::agg_png, width=width, height=height, units="mm", dpi=300)
+}
+```
+
+
+## A, C and E. Discovery-cohort ROC curves
+
+```{r figure6-section2}
+d <- read_table("roc_points.csv")
+s <- read_table("roc_summary.csv")
+cols <- c(RF="red",XGB="orange",GBM="pink",Lasso="brown","Logistic Regression"="darkgreen",QDA="blue",SVM="grey50")
+base_roc <- function(z,title,subtitle) {
+ ggplot(z,aes(FPR,TPR,colour=Model,linetype=Balance,group=interaction(Model,Balance))) +
+ geom_abline(slope=1,intercept=0,colour="grey60",linetype="longdash",linewidth=.4)+
+ geom_path(linewidth=.5)+scale_colour_manual(values=cols)+
+ scale_linetype_manual(values=c(Unbalanced="solid",Balanced="dashed"))+
+ scale_x_continuous(limits=c(0,1),breaks=seq(0,1,.25),expand=expansion(mult=.02))+
+ scale_y_continuous(limits=c(0,1),breaks=seq(0,1,.25),expand=expansion(mult=.02))+
+ coord_equal()+labs(title=title,subtitle=subtitle,x="1-Specificity",y="Sensitivity",colour=NULL,linetype=NULL)+
+ theme(legend.position="right",plot.title=element_text(size=11),plot.subtitle=element_text(size=9),plot.caption=element_text(size=8,hjust=0))
+}
+make_discovery <- function(panel) {
+ z<-d[d$Panel==panel,];a<-s[s$Panel==panel,];best<-a[which.max(a$AUROC),]
+ base_roc(z,paste0("(",panel,") ",unique(z$Feature_set)),"Discovery cohort")+
+ labs(caption=sprintf("Highest AUROC = %.3f (%s, %s)",best$AUROC,best$Model,tolower(best$Balance)))
+}
+p_a<-make_discovery("A");p_c<-make_discovery("C");p_e<-make_discovery("E")
+```
+
+
+## B, D and F. Validation-cohort ROC curves
+
+```{r figure6-section3}
+make_validation<-function(panel,model,n) {
+ z<-d[d$Panel==panel & d$Model==model & d$Balance=="Balanced",]
+ a<-s[s$Panel==panel & s$Model==model & s$Balance=="Balanced",]
+ base_roc(z,paste0("(",panel,") ",unique(z$Feature_set)),paste0("Validation cohort (n = ",n,")"))+
+ guides(colour="none",linetype="none")+
+ labs(caption=sprintf("%s, balanced training; AUROC = %.3f",model,a$AUROC))
+}
+p_b<-make_validation("B","QDA",20)
+p_d<-make_validation("D","Logistic Regression",20)
+p_f<-make_validation("F","Logistic Regression",17)
+```
+
+
+## Export all panels and assemble the figure
+
+```{r figure6-section4}
+plots<-list(A=p_a,B=p_b,C=p_c,D=p_d,E=p_e,F=p_f)
+for(n in names(plots)) save_plot(plots[[n]],paste0("figure6",n),170,125)
+p_all<-wrap_plots(plots,ncol=2)
+save_plot(p_all,"figure6",330,360)
+```
+
+
+```{r figure6-preview4, echo=FALSE}
+knitr::include_graphics(c("plots/figure6.png"))
+```
+
+
+## Session information
+
+```{r session-info}
+sessionInfo()
+```
