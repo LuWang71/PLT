@@ -1,0 +1,9 @@
+Measure,Kingdom,Group,Label,Text_x,Text_y,Arrow_x,Arrow_y,Arrow_end_x,Arrow_end_y
+Relative,Bacteria,w/,Streptococcus,0.8,0.96,1.5,0.94,2,0.8104710245190806
+Relative,Bacteria,w/o,Streptococcus,0.8,0.9190402606070148,1.5,0.8990402606070147,2,0.7690402606070147
+Relative,Fungi,w/,Trichosporon,0.8,0.96,1.5,0.94,2,0.8599222149947798
+Relative,Fungi,w/o,Trichosporon,0.8,0.96,1.5,0.94,2,0.8903384364038687
+Absolute,Bacteria,w/,Streptococcus,0.8,2850605326.2036705,1.5,2711893766.906142,2,1810268631.4722092
+Absolute,Bacteria,w/o,Streptococcus,0.8,6357554995.449751,1.5,6152346467.148706,2,4818491033.191917
+Absolute,Fungi,w/,Trichosporon,0.8,15756387.429488957,1.5,15278169.62428516,2,12169753.890460508
+Absolute,Fungi,w/o,Trichosporon,0.8,2060331.4633065225,1.5,2007015.9284834396,2,1660464.9521333987

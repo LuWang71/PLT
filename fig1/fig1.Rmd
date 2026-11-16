@@ -1,0 +1,194 @@
+---
+title: "Figure 1. Multi-kingdom microbiome profiles"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    code_folding: show
+    self_contained: true
+---
+
+Panel A uses the supplied study-design image. Panels B–G are drawn from final sample-level or summary tables. Existing statistical annotations are read from the supplied tables; no statistical models are refitted.
+
+Open this file in RStudio and click **Knit**, or run `rmarkdown::render("fig1/fig1.Rmd")` from the repository root. Tables are read from `data/`; PDF and PNG files are written to `plots/`.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=TRUE, error=FALSE,
+                      fig.width=10, fig.height=6, out.width="100%", dpi=120)
+dir.create("plots", showWarnings=FALSE)
+```
+
+## Input files
+
+```{r inputs, echo=FALSE}
+knitr::kable(data.frame(File=list.files("data", pattern="\\.(csv|png)$")), col.names="File")
+```
+
+
+## B. Absolute abundance and plot settings
+
+```{r figure1-section1}
+library(ggplot2)
+library(patchwork)
+
+figure1_root <- "."
+data_dir <- file.path(figure1_root, "data")
+output_dir <- file.path(figure1_root, "plots")
+dir.create(output_dir, showWarnings = FALSE)
+read_plot_data <- function(name) read.csv(file.path(data_dir, name), check.names = FALSE)
+save_panel <- function(plot, name, width, height) {
+  ggsave(file.path(output_dir, paste0(name, ".pdf")), plot,
+         width = width, height = height, units = "mm", device = cairo_pdf, bg = "white")
+  ggsave(file.path(output_dir, paste0(name, ".png")), plot,
+         width = width, height = height, units = "mm", dpi = 600,
+         device = ragg::agg_png, bg = "white")
+}
+panel_theme <- function() theme_classic(base_size = 7, base_family = "Arial") +
+  theme(panel.grid = element_blank(),
+        panel.border = element_rect(fill = NA, colour = "black", linewidth = 0.35),
+        axis.line = element_blank(), axis.text = element_text(colour = "black"),
+        axis.ticks = element_line(linewidth = 0.3),
+        axis.ticks.length = grid::unit(1, "mm"),
+        strip.background = element_blank(), strip.text = element_text(size = 7),
+        plot.margin = margin(2, 2, 2, 2))
+
+abundance <- read_plot_data("figure1B_abundance.csv")
+abundance$Kingdom <- factor(abundance$Kingdom, c("Bacteria", "Fungi", "Archaea"))
+pB <- ggplot(abundance, aes(Day, Log10Abundance)) +
+  geom_point(size = 0.18, alpha = 0.45, colour = "grey30") +
+  facet_wrap(~Kingdom, nrow = 1) +
+  scale_x_continuous(breaks = seq(0, 40, 10)) +
+  scale_y_continuous(breaks = seq(0, 12.5, 2.5)) +
+  coord_cartesian(xlim = c(-1, 40), ylim = c(0, 12.5)) +
+  labs(x = "Day", y = expression(Log[10]~"(Total abundance)"), title = "(B)") +
+  panel_theme()
+save_panel(pB, "figure1B", 90, 40)
+```
+
+
+```{r figure1-preview1, echo=FALSE}
+knitr::include_graphics(c("plots/figure1B.png"))
+```
+
+
+## C. Preoperative and postoperative diversity
+
+```{r figure1-section2}
+diversity <- read_plot_data("figure1C_diversity.csv")
+annotations <- read_plot_data("figure1C_annotations.csv")
+annotations$Kingdom <- factor(annotations$Kingdom, c("Bacteria", "Fungi", "Archaea"))
+annotations$x_start <- 1
+annotations$x_end <- 2
+annotations$bracket_y <- 6.4
+diversity$Kingdom <- factor(diversity$Kingdom, c("Bacteria", "Fungi", "Archaea"))
+diversity$Period <- factor(diversity$Period, c("Pre", "Post"))
+diversity$Fill <- paste(diversity$Kingdom, diversity$Period)
+colours <- c("Bacteria Pre" = "#F2CD89", "Bacteria Post" = "#B56A3A",
+             "Fungi Pre" = "#CFDD97", "Fungi Post" = "#929A3E",
+             "Archaea Pre" = "#C6E3F3", "Archaea Post" = "#1488B7")
+# Labels are saved model results. No hypothesis test is run here.
+pC <- ggplot(diversity, aes(Period, Shannon)) +
+  geom_violin(aes(fill = Fill), trim = FALSE, linewidth = 0.3, scale = "width") +
+  geom_boxplot(width = 0.13, fill = "white", linewidth = 0.25, outlier.shape = NA) +
+  geom_point(position = position_jitter(width = 0.18, seed = 16), size = 0.15, alpha = 0.7) +
+  geom_segment(data = annotations, aes(x = x_start, xend = x_end, y = bracket_y, yend = bracket_y),
+               inherit.aes = FALSE, linewidth = 0.3) +
+  geom_text(data = annotations, aes(x = 1.5, y = 7, label = Label),
+            inherit.aes = FALSE, size = 2.5) +
+  facet_wrap(~Kingdom, nrow = 1) + scale_fill_manual(values = colours, guide = "none") +
+  scale_y_continuous(breaks = c(0, 4, 8)) + coord_cartesian(ylim = c(-3.5, 8)) +
+  labs(x = NULL, y = "Shannon index", title = "(C)") + panel_theme()
+save_panel(pC, "figure1C", 90, 40)
+```
+
+
+```{r figure1-preview2, echo=FALSE}
+knitr::include_graphics(c("plots/figure1C.png"))
+```
+
+
+## D–G. Relative and absolute compositions
+
+```{r figure1-section3}
+library(ggalluvial)
+relative <- read_plot_data("figure1DE_composition.csv")
+absolute <- read_plot_data("figure1FG_abundance.csv")
+palette <- read_plot_data("figure1_palette.csv")
+plot_labels <- read_plot_data("figure1_annotations.csv")
+
+composition_panel <- function(values, kingdom, group, is_relative) {
+  d <- values[values$Kingdom == kingdom & values$Group == group, ]
+  pal <- palette[palette$Kingdom == kingdom, ]
+  pal <- pal[order(pal$Bottom_to_top), ]
+  d$Genus <- factor(d$Genus, levels = rev(pal$Genus))
+  times <- if (group == "w/o") c("T0", "T1", "T3") else c("T0", "T1", "T2", "T3")
+  d$Timepoint <- factor(d$Timepoint, levels = times)
+  p <- ggplot(d, aes(Timepoint, Value, stratum = Genus, alluvium = Genus, fill = Genus)) +
+    geom_flow(width = 0.5, alpha = 0.45, colour = "transparent") +
+    geom_stratum(width = 0.5, colour = NA) +
+    scale_fill_manual(values = setNames(pal$Color, pal$Genus),
+                      breaks = pal$Genus[order(pal$Legend_order)], drop = FALSE) +
+    scale_x_discrete(expand = expansion(add = 0.25)) +
+    labs(x = NULL, y = if (is_relative) "Relative abundance" else "Absolute abundance",
+         title = paste(kingdom, group), fill = NULL) + panel_theme() +
+    theme(plot.title = element_text(hjust = 0.5, size = 7),
+          legend.text = element_text(size = 4.3, face = "italic"),
+          legend.key.height = grid::unit(1.6, "mm"),
+          legend.key.width = grid::unit(1.6, "mm"), legend.spacing.y = grid::unit(0, "mm"))
+  if (is_relative) p <- p + scale_y_continuous(breaks = seq(0, 1, 0.25),
+                                                limits = c(0, 1.000001), expand = c(0, 0))
+  else p <- p + scale_y_continuous(labels = function(x) format(x, scientific = TRUE),
+                                   breaks = scales::breaks_pretty(n = 4), expand = expansion(mult = c(0, 0.04)))
+  label <- plot_labels[plot_labels$Kingdom == kingdom & plot_labels$Group == group &
+                         plot_labels$Measure == if (is_relative) "Relative" else "Absolute", ]
+  p + geom_text(data = label, aes(Text_x, Text_y, label = Label), inherit.aes = FALSE,
+                fontface = "italic", size = 1.8, hjust = 0) +
+    geom_segment(data = label, aes(x = Arrow_x, y = Arrow_y,
+                  xend = Arrow_end_x, yend = Arrow_end_y), inherit.aes = FALSE,
+                  colour = "grey45", linewidth = 0.2,
+                  arrow = grid::arrow(length = grid::unit(1, "mm")))
+}
+paired_panels <- function(values, kingdom, is_relative, tag) {
+  left <- composition_panel(values, kingdom, "w/o", is_relative)
+  right <- composition_panel(values, kingdom, "w/", is_relative) + labs(y = NULL)
+  (left | right) + plot_layout(guides = "collect") +
+    plot_annotation(title = tag)
+}
+pD <- paired_panels(relative, "Bacteria", TRUE, "(D)")
+pE <- paired_panels(relative, "Fungi", TRUE, "(E)")
+pF <- paired_panels(absolute, "Bacteria", FALSE, "(F)")
+pG <- paired_panels(absolute, "Fungi", FALSE, "(G)")
+for (letter in c("D", "E", "F", "G")) save_panel(get(paste0("p", letter)), paste0("figure1", letter), 100, 47)
+```
+
+
+```{r figure1-preview3, echo=FALSE}
+knitr::include_graphics(c("plots/figure1D.png", "plots/figure1E.png", "plots/figure1F.png", "plots/figure1G.png"))
+```
+
+
+## A. Study design and figure assembly
+
+```{r figure1-section4}
+# Panel A is the final, manually drawn study diagram, supplied as a 600-dpi asset.
+diagram <- png::readPNG(file.path(data_dir, "figure1A_diagram.png"))
+pA <- wrap_elements(full = grid::rasterGrob(diagram, interpolate = FALSE))
+figure1 <- pA / (wrap_elements(full = pB) | wrap_elements(full = pC)) /
+  (wrap_elements(full = pD) | wrap_elements(full = pE)) /
+  (wrap_elements(full = pF) | wrap_elements(full = pG)) +
+  plot_layout(heights = c(0.95, 0.65, 0.85, 0.85))
+save_panel(figure1, "figure1", 190, 165)
+```
+
+
+```{r figure1-preview4, echo=FALSE}
+knitr::include_graphics(c("plots/figure1.png"))
+```
+
+
+## Session information
+
+```{r session-info}
+sessionInfo()
+```
