@@ -1,0 +1,505 @@
+Group,Timepoint,Kingdom,Module,Metric,Value,MetricLabel
+W/ Infection,T0,Bacteria,BM1,assortativity,0.0579771385436349,Assortativity
+W/ Infection,T1,Bacteria,BM1,assortativity,0.187177962992137,Assortativity
+W/ Infection,T2,Bacteria,BM1,assortativity,-0.0310024920970385,Assortativity
+W/ Infection,T3,Bacteria,BM1,assortativity,0.0244311907138702,Assortativity
+W/ Infection,T0,Bacteria,BM2,assortativity,-0.2,Assortativity
+W/ Infection,T1,Bacteria,BM2,assortativity,,Assortativity
+W/ Infection,T2,Bacteria,BM2,assortativity,-0.714285714285714,Assortativity
+W/ Infection,T3,Bacteria,BM2,assortativity,,Assortativity
+W/ Infection,T0,Bacteria,BM3,assortativity,0.155650062681499,Assortativity
+W/ Infection,T1,Bacteria,BM3,assortativity,0.708457520616336,Assortativity
+W/ Infection,T2,Bacteria,BM3,assortativity,0.577105917089262,Assortativity
+W/ Infection,T3,Bacteria,BM3,assortativity,0.522409063276531,Assortativity
+W/ Infection,T0,Bacteria,BM4,assortativity,0.112380819489836,Assortativity
+W/ Infection,T1,Bacteria,BM4,assortativity,0.36604207644566,Assortativity
+W/ Infection,T2,Bacteria,BM4,assortativity,0.376723077321403,Assortativity
+W/ Infection,T3,Bacteria,BM4,assortativity,0.265008203628004,Assortativity
+W/O Infection,T0,Bacteria,BM1,assortativity,0.111135345546723,Assortativity
+W/O Infection,T1,Bacteria,BM1,assortativity,0.14114349361215,Assortativity
+W/O Infection,T3,Bacteria,BM1,assortativity,-0.0975057910692569,Assortativity
+W/O Infection,T0,Bacteria,BM2,assortativity,-0.636363636363635,Assortativity
+W/O Infection,T1,Bacteria,BM2,assortativity,-0.454545454545455,Assortativity
+W/O Infection,T3,Bacteria,BM2,assortativity,-0.384615384615389,Assortativity
+W/O Infection,T0,Bacteria,BM3,assortativity,0.447907843469422,Assortativity
+W/O Infection,T1,Bacteria,BM3,assortativity,0.446788343475489,Assortativity
+W/O Infection,T3,Bacteria,BM3,assortativity,0.362038645232754,Assortativity
+W/O Infection,T0,Bacteria,BM4,assortativity,0.855082486461896,Assortativity
+W/O Infection,T1,Bacteria,BM4,assortativity,0.669822779423025,Assortativity
+W/O Infection,T3,Bacteria,BM4,assortativity,0.0489132074787133,Assortativity
+W/ Infection,T0,Fungi,FM1,assortativity,-1.0,Assortativity
+W/ Infection,T1,Fungi,FM1,assortativity,-0.548387096774194,Assortativity
+W/ Infection,T2,Fungi,FM1,assortativity,-0.500000000000003,Assortativity
+W/ Infection,T3,Fungi,FM1,assortativity,-1.0,Assortativity
+W/ Infection,T0,Fungi,FM2,assortativity,-0.0076335877862587,Assortativity
+W/ Infection,T1,Fungi,FM2,assortativity,,Assortativity
+W/ Infection,T2,Fungi,FM2,assortativity,1.0,Assortativity
+W/ Infection,T3,Fungi,FM2,assortativity,-0.250000000000001,Assortativity
+W/O Infection,T0,Fungi,FM1,assortativity,-1.0,Assortativity
+W/O Infection,T1,Fungi,FM1,assortativity,-1.0,Assortativity
+W/O Infection,T3,Fungi,FM1,assortativity,-0.500000000000003,Assortativity
+W/O Infection,T0,Fungi,FM2,assortativity,0.0,Assortativity
+W/O Infection,T1,Fungi,FM2,assortativity,-0.379204892966361,Assortativity
+W/O Infection,T3,Fungi,FM2,assortativity,-0.161290322580646,Assortativity
+W/ Infection,T0,Bacteria,BM1,avg_degree,35.531914893617,"Avg
+degree"
+W/ Infection,T1,Bacteria,BM1,avg_degree,10.7755102040816,"Avg
+degree"
+W/ Infection,T2,Bacteria,BM1,avg_degree,29.0212765957447,"Avg
+degree"
+W/ Infection,T3,Bacteria,BM1,avg_degree,27.9130434782609,"Avg
+degree"
+W/ Infection,T0,Bacteria,BM2,avg_degree,2.66666666666667,"Avg
+degree"
+W/ Infection,T1,Bacteria,BM2,avg_degree,1.0,"Avg
+degree"
+W/ Infection,T2,Bacteria,BM2,avg_degree,1.6,"Avg
+degree"
+W/ Infection,T3,Bacteria,BM2,avg_degree,1.5,"Avg
+degree"
+W/ Infection,T0,Bacteria,BM3,avg_degree,15.5433070866142,"Avg
+degree"
+W/ Infection,T1,Bacteria,BM3,avg_degree,9.390625,"Avg
+degree"
+W/ Infection,T2,Bacteria,BM3,avg_degree,10.2,"Avg
+degree"
+W/ Infection,T3,Bacteria,BM3,avg_degree,6.83018867924528,"Avg
+degree"
+W/ Infection,T0,Bacteria,BM4,avg_degree,39.6136363636364,"Avg
+degree"
+W/ Infection,T1,Bacteria,BM4,avg_degree,23.9777777777778,"Avg
+degree"
+W/ Infection,T2,Bacteria,BM4,avg_degree,31.2790697674419,"Avg
+degree"
+W/ Infection,T3,Bacteria,BM4,avg_degree,37.2705882352941,"Avg
+degree"
+W/O Infection,T0,Bacteria,BM1,avg_degree,36.3333333333333,"Avg
+degree"
+W/O Infection,T1,Bacteria,BM1,avg_degree,34.0408163265306,"Avg
+degree"
+W/O Infection,T3,Bacteria,BM1,avg_degree,31.8139534883721,"Avg
+degree"
+W/O Infection,T0,Bacteria,BM2,avg_degree,3.0,"Avg
+degree"
+W/O Infection,T1,Bacteria,BM2,avg_degree,4.0,"Avg
+degree"
+W/O Infection,T3,Bacteria,BM2,avg_degree,3.0,"Avg
+degree"
+W/O Infection,T0,Bacteria,BM3,avg_degree,11.2941176470588,"Avg
+degree"
+W/O Infection,T1,Bacteria,BM3,avg_degree,11.7704918032787,"Avg
+degree"
+W/O Infection,T3,Bacteria,BM3,avg_degree,9.06306306306306,"Avg
+degree"
+W/O Infection,T0,Bacteria,BM4,avg_degree,22.6823529411765,"Avg
+degree"
+W/O Infection,T1,Bacteria,BM4,avg_degree,27.1566265060241,"Avg
+degree"
+W/O Infection,T3,Bacteria,BM4,avg_degree,39.816091954023,"Avg
+degree"
+W/ Infection,T0,Fungi,FM1,avg_degree,0.8,"Avg
+degree"
+W/ Infection,T1,Fungi,FM1,avg_degree,3.2,"Avg
+degree"
+W/ Infection,T2,Fungi,FM1,avg_degree,1.2,"Avg
+degree"
+W/ Infection,T3,Fungi,FM1,avg_degree,0.8,"Avg
+degree"
+W/ Infection,T0,Fungi,FM2,avg_degree,1.84615384615385,"Avg
+degree"
+W/ Infection,T1,Fungi,FM2,avg_degree,0.428571428571429,"Avg
+degree"
+W/ Infection,T2,Fungi,FM2,avg_degree,0.888888888888889,"Avg
+degree"
+W/ Infection,T3,Fungi,FM2,avg_degree,1.25,"Avg
+degree"
+W/O Infection,T0,Fungi,FM1,avg_degree,1.2,"Avg
+degree"
+W/O Infection,T1,Fungi,FM1,avg_degree,1.2,"Avg
+degree"
+W/O Infection,T3,Fungi,FM1,avg_degree,1.2,"Avg
+degree"
+W/O Infection,T0,Fungi,FM2,avg_degree,2.13333333333333,"Avg
+degree"
+W/O Infection,T1,Fungi,FM2,avg_degree,2.2,"Avg
+degree"
+W/O Infection,T3,Fungi,FM2,avg_degree,2.0,"Avg
+degree"
+W/ Infection,T0,Bacteria,BM1,avg_path_length,0.898756989965374,"Avg path
+length"
+W/ Infection,T1,Bacteria,BM1,avg_path_length,1.34254905266729,"Avg path
+length"
+W/ Infection,T2,Bacteria,BM1,avg_path_length,0.874678156118001,"Avg path
+length"
+W/ Infection,T3,Bacteria,BM1,avg_path_length,0.896168732532262,"Avg path
+length"
+W/ Infection,T0,Bacteria,BM2,avg_path_length,1.05624212663171,"Avg path
+length"
+W/ Infection,T1,Bacteria,BM2,avg_path_length,0.749115925632008,"Avg path
+length"
+W/ Infection,T2,Bacteria,BM2,avg_path_length,0.899686845751146,"Avg path
+length"
+W/ Infection,T3,Bacteria,BM2,avg_path_length,0.722389280154432,"Avg path
+length"
+W/ Infection,T0,Bacteria,BM3,avg_path_length,1.33440313188903,"Avg path
+length"
+W/ Infection,T1,Bacteria,BM3,avg_path_length,3.07028343914657,"Avg path
+length"
+W/ Infection,T2,Bacteria,BM3,avg_path_length,2.17770580631281,"Avg path
+length"
+W/ Infection,T3,Bacteria,BM3,avg_path_length,2.57882502189331,"Avg path
+length"
+W/ Infection,T0,Bacteria,BM4,avg_path_length,1.04317178582861,"Avg path
+length"
+W/ Infection,T1,Bacteria,BM4,avg_path_length,1.40463192655902,"Avg path
+length"
+W/ Infection,T2,Bacteria,BM4,avg_path_length,1.19743905418696,"Avg path
+length"
+W/ Infection,T3,Bacteria,BM4,avg_path_length,1.11008856654803,"Avg path
+length"
+W/O Infection,T0,Bacteria,BM1,avg_path_length,0.889398399437419,"Avg path
+length"
+W/O Infection,T1,Bacteria,BM1,avg_path_length,0.987323236395927,"Avg path
+length"
+W/O Infection,T3,Bacteria,BM1,avg_path_length,0.849026497565888,"Avg path
+length"
+W/O Infection,T0,Bacteria,BM2,avg_path_length,1.03862010790074,"Avg path
+length"
+W/O Infection,T1,Bacteria,BM2,avg_path_length,0.886451400049336,"Avg path
+length"
+W/O Infection,T3,Bacteria,BM2,avg_path_length,1.01516573233341,"Avg path
+length"
+W/O Infection,T0,Bacteria,BM3,avg_path_length,1.76325060079953,"Avg path
+length"
+W/O Infection,T1,Bacteria,BM3,avg_path_length,1.52631621010081,"Avg path
+length"
+W/O Infection,T3,Bacteria,BM3,avg_path_length,1.74974556363966,"Avg path
+length"
+W/O Infection,T0,Bacteria,BM4,avg_path_length,1.05501052401505,"Avg path
+length"
+W/O Infection,T1,Bacteria,BM4,avg_path_length,1.33900954026146,"Avg path
+length"
+W/O Infection,T3,Bacteria,BM4,avg_path_length,1.045331166156,"Avg path
+length"
+W/ Infection,T0,Fungi,FM1,avg_path_length,0.926288539043706,"Avg path
+length"
+W/ Infection,T1,Fungi,FM1,avg_path_length,0.961745724936761,"Avg path
+length"
+W/ Infection,T2,Fungi,FM1,avg_path_length,1.262048670127,"Avg path
+length"
+W/ Infection,T3,Fungi,FM1,avg_path_length,0.974992259561478,"Avg path
+length"
+W/ Infection,T0,Fungi,FM2,avg_path_length,1.5078864010207,"Avg path
+length"
+W/ Infection,T1,Fungi,FM2,avg_path_length,0.783851126482341,"Avg path
+length"
+W/ Infection,T2,Fungi,FM2,avg_path_length,0.74205930442934,"Avg path
+length"
+W/ Infection,T3,Fungi,FM2,avg_path_length,0.795488099519596,"Avg path
+length"
+W/O Infection,T0,Fungi,FM1,avg_path_length,1.03995417960974,"Avg path
+length"
+W/O Infection,T1,Fungi,FM1,avg_path_length,1.00614411996538,"Avg path
+length"
+W/O Infection,T3,Fungi,FM1,avg_path_length,1.15984709618837,"Avg path
+length"
+W/O Infection,T0,Fungi,FM2,avg_path_length,2.02469501790255,"Avg path
+length"
+W/O Infection,T1,Fungi,FM2,avg_path_length,1.19993908322295,"Avg path
+length"
+W/O Infection,T3,Fungi,FM2,avg_path_length,1.30694413377529,"Avg path
+length"
+W/ Infection,T0,Bacteria,BM1,density,0.772432932469935,Density
+W/ Infection,T1,Bacteria,BM1,density,0.224489795918367,Density
+W/ Infection,T2,Bacteria,BM1,density,0.630897317298797,Density
+W/ Infection,T3,Bacteria,BM1,density,0.620289855072464,Density
+W/ Infection,T0,Bacteria,BM2,density,0.533333333333333,Density
+W/ Infection,T1,Bacteria,BM2,density,0.2,Density
+W/ Infection,T2,Bacteria,BM2,density,0.4,Density
+W/ Infection,T3,Bacteria,BM2,density,0.5,Density
+W/ Infection,T0,Bacteria,BM3,density,0.123359580052493,Density
+W/ Infection,T1,Bacteria,BM3,density,0.0739419291338583,Density
+W/ Infection,T2,Bacteria,BM3,density,0.0857142857142857,Density
+W/ Infection,T3,Bacteria,BM3,density,0.0650494159928122,Density
+W/ Infection,T0,Bacteria,BM4,density,0.455329153605016,Density
+W/ Infection,T1,Bacteria,BM4,density,0.269413233458177,Density
+W/ Infection,T2,Bacteria,BM4,density,0.367989056087551,Density
+W/ Infection,T3,Bacteria,BM4,density,0.443697478991597,Density
+W/O Infection,T0,Bacteria,BM1,density,0.773049645390071,Density
+W/O Infection,T1,Bacteria,BM1,density,0.709183673469388,Density
+W/O Infection,T3,Bacteria,BM1,density,0.757475083056478,Density
+W/O Infection,T0,Bacteria,BM2,density,0.6,Density
+W/O Infection,T1,Bacteria,BM2,density,0.8,Density
+W/O Infection,T3,Bacteria,BM2,density,0.6,Density
+W/O Infection,T0,Bacteria,BM3,density,0.0836601307189543,Density
+W/O Infection,T1,Bacteria,BM3,density,0.0972767917626338,Density
+W/O Infection,T3,Bacteria,BM3,density,0.0823914823914824,Density
+W/O Infection,T0,Bacteria,BM4,density,0.270028011204482,Density
+W/O Infection,T1,Bacteria,BM4,density,0.331178372024684,Density
+W/O Infection,T3,Bacteria,BM4,density,0.462977813418872,Density
+W/ Infection,T0,Fungi,FM1,density,0.2,Density
+W/ Infection,T1,Fungi,FM1,density,0.8,Density
+W/ Infection,T2,Fungi,FM1,density,0.3,Density
+W/ Infection,T3,Fungi,FM1,density,0.2,Density
+W/ Infection,T0,Fungi,FM2,density,0.153846153846154,Density
+W/ Infection,T1,Fungi,FM2,density,0.032967032967033,Density
+W/ Infection,T2,Fungi,FM2,density,0.111111111111111,Density
+W/ Infection,T3,Fungi,FM2,density,0.178571428571429,Density
+W/O Infection,T0,Fungi,FM1,density,0.3,Density
+W/O Infection,T1,Fungi,FM1,density,0.3,Density
+W/O Infection,T3,Fungi,FM1,density,0.3,Density
+W/O Infection,T0,Fungi,FM2,density,0.152380952380952,Density
+W/O Infection,T1,Fungi,FM2,density,0.244444444444444,Density
+W/O Infection,T3,Fungi,FM2,density,0.181818181818182,Density
+W/ Infection,T0,Bacteria,BM1,diameter,1.89242713973074,Diameter
+W/ Infection,T1,Bacteria,BM1,diameter,3.6174195386031,Diameter
+W/ Infection,T2,Bacteria,BM1,diameter,2.04018318976832,Diameter
+W/ Infection,T3,Bacteria,BM1,diameter,2.0915337152764,Diameter
+W/ Infection,T0,Bacteria,BM2,diameter,1.95662912337812,Diameter
+W/ Infection,T1,Bacteria,BM2,diameter,0.85121107266436,Diameter
+W/ Infection,T2,Bacteria,BM2,diameter,1.31878925663257,Diameter
+W/ Infection,T3,Bacteria,BM2,diameter,0.794721030346132,Diameter
+W/ Infection,T0,Bacteria,BM3,diameter,3.03404962536512,Diameter
+W/ Infection,T1,Bacteria,BM3,diameter,10.8873661245859,Diameter
+W/ Infection,T2,Bacteria,BM3,diameter,5.0675934335646,Diameter
+W/ Infection,T3,Bacteria,BM3,diameter,7.14903405436233,Diameter
+W/ Infection,T0,Bacteria,BM4,diameter,2.03348151311235,Diameter
+W/ Infection,T1,Bacteria,BM4,diameter,4.07137669169876,Diameter
+W/ Infection,T2,Bacteria,BM4,diameter,3.9631213251021,Diameter
+W/ Infection,T3,Bacteria,BM4,diameter,2.64777289367808,Diameter
+W/O Infection,T0,Bacteria,BM1,diameter,1.46173364973594,Diameter
+W/O Infection,T1,Bacteria,BM1,diameter,3.23382259531559,Diameter
+W/O Infection,T3,Bacteria,BM1,diameter,1.47125732790123,Diameter
+W/O Infection,T0,Bacteria,BM2,diameter,1.52041025807471,Diameter
+W/O Infection,T1,Bacteria,BM2,diameter,1.39913770462667,Diameter
+W/O Infection,T3,Bacteria,BM2,diameter,1.9655739876522,Diameter
+W/O Infection,T0,Bacteria,BM3,diameter,3.83062088113322,Diameter
+W/O Infection,T1,Bacteria,BM3,diameter,3.89358234894139,Diameter
+W/O Infection,T3,Bacteria,BM3,diameter,5.07429488197894,Diameter
+W/O Infection,T0,Bacteria,BM4,diameter,3.24995949234141,Diameter
+W/O Infection,T1,Bacteria,BM4,diameter,3.30345917224377,Diameter
+W/O Infection,T3,Bacteria,BM4,diameter,2.00023230899751,Diameter
+W/ Infection,T0,Fungi,FM1,diameter,1.38943280856556,Diameter
+W/ Infection,T1,Fungi,FM1,diameter,1.55291103646501,Diameter
+W/ Infection,T2,Fungi,FM1,diameter,2.28288927131563,Diameter
+W/ Infection,T3,Fungi,FM1,diameter,1.46248838934222,Diameter
+W/ Infection,T0,Fungi,FM2,diameter,3.17928698146938,Diameter
+W/ Infection,T1,Fungi,FM2,diameter,0.906945131904827,Diameter
+W/ Infection,T2,Fungi,FM2,diameter,0.82083884513557,Diameter
+W/ Infection,T3,Fungi,FM2,diameter,1.23556752468486,Diameter
+W/O Infection,T0,Fungi,FM1,diameter,1.46797496421485,Diameter
+W/O Infection,T1,Fungi,FM1,diameter,1.39377517404927,Diameter
+W/O Infection,T3,Fungi,FM1,diameter,2.11349388340433,Diameter
+W/O Infection,T0,Fungi,FM2,diameter,3.93142023928148,Diameter
+W/O Infection,T1,Fungi,FM2,diameter,2.04982436179021,Diameter
+W/O Infection,T3,Fungi,FM2,diameter,2.56991329449762,Diameter
+W/ Infection,T0,Bacteria,BM1,edge_count,835.0,"Edge
+count"
+W/ Infection,T1,Bacteria,BM1,edge_count,264.0,"Edge
+count"
+W/ Infection,T2,Bacteria,BM1,edge_count,682.0,"Edge
+count"
+W/ Infection,T3,Bacteria,BM1,edge_count,642.0,"Edge
+count"
+W/ Infection,T0,Bacteria,BM2,edge_count,8.0,"Edge
+count"
+W/ Infection,T1,Bacteria,BM2,edge_count,3.0,"Edge
+count"
+W/ Infection,T2,Bacteria,BM2,edge_count,4.0,"Edge
+count"
+W/ Infection,T3,Bacteria,BM2,edge_count,3.0,"Edge
+count"
+W/ Infection,T0,Bacteria,BM3,edge_count,987.0,"Edge
+count"
+W/ Infection,T1,Bacteria,BM3,edge_count,601.0,"Edge
+count"
+W/ Infection,T2,Bacteria,BM3,edge_count,612.0,"Edge
+count"
+W/ Infection,T3,Bacteria,BM3,edge_count,362.0,"Edge
+count"
+W/ Infection,T0,Bacteria,BM4,edge_count,1743.0,"Edge
+count"
+W/ Infection,T1,Bacteria,BM4,edge_count,1079.0,"Edge
+count"
+W/ Infection,T2,Bacteria,BM4,edge_count,1345.0,"Edge
+count"
+W/ Infection,T3,Bacteria,BM4,edge_count,1584.0,"Edge
+count"
+W/O Infection,T0,Bacteria,BM1,edge_count,872.0,"Edge
+count"
+W/O Infection,T1,Bacteria,BM1,edge_count,834.0,"Edge
+count"
+W/O Infection,T3,Bacteria,BM1,edge_count,684.0,"Edge
+count"
+W/O Infection,T0,Bacteria,BM2,edge_count,9.0,"Edge
+count"
+W/O Infection,T1,Bacteria,BM2,edge_count,12.0,"Edge
+count"
+W/O Infection,T3,Bacteria,BM2,edge_count,9.0,"Edge
+count"
+W/O Infection,T0,Bacteria,BM3,edge_count,768.0,"Edge
+count"
+W/O Infection,T1,Bacteria,BM3,edge_count,718.0,"Edge
+count"
+W/O Infection,T3,Bacteria,BM3,edge_count,503.0,"Edge
+count"
+W/O Infection,T0,Bacteria,BM4,edge_count,964.0,"Edge
+count"
+W/O Infection,T1,Bacteria,BM4,edge_count,1127.0,"Edge
+count"
+W/O Infection,T3,Bacteria,BM4,edge_count,1732.0,"Edge
+count"
+W/ Infection,T0,Fungi,FM1,edge_count,2.0,"Edge
+count"
+W/ Infection,T1,Fungi,FM1,edge_count,8.0,"Edge
+count"
+W/ Infection,T2,Fungi,FM1,edge_count,3.0,"Edge
+count"
+W/ Infection,T3,Fungi,FM1,edge_count,2.0,"Edge
+count"
+W/ Infection,T0,Fungi,FM2,edge_count,12.0,"Edge
+count"
+W/ Infection,T1,Fungi,FM2,edge_count,3.0,"Edge
+count"
+W/ Infection,T2,Fungi,FM2,edge_count,4.0,"Edge
+count"
+W/ Infection,T3,Fungi,FM2,edge_count,5.0,"Edge
+count"
+W/O Infection,T0,Fungi,FM1,edge_count,3.0,"Edge
+count"
+W/O Infection,T1,Fungi,FM1,edge_count,3.0,"Edge
+count"
+W/O Infection,T3,Fungi,FM1,edge_count,3.0,"Edge
+count"
+W/O Infection,T0,Fungi,FM2,edge_count,16.0,"Edge
+count"
+W/O Infection,T1,Fungi,FM2,edge_count,11.0,"Edge
+count"
+W/O Infection,T3,Fungi,FM2,edge_count,12.0,"Edge
+count"
+W/ Infection,T0,Bacteria,BM1,node_count,47.0,"Node
+count"
+W/ Infection,T1,Bacteria,BM1,node_count,49.0,"Node
+count"
+W/ Infection,T2,Bacteria,BM1,node_count,47.0,"Node
+count"
+W/ Infection,T3,Bacteria,BM1,node_count,46.0,"Node
+count"
+W/ Infection,T0,Bacteria,BM2,node_count,6.0,"Node
+count"
+W/ Infection,T1,Bacteria,BM2,node_count,6.0,"Node
+count"
+W/ Infection,T2,Bacteria,BM2,node_count,5.0,"Node
+count"
+W/ Infection,T3,Bacteria,BM2,node_count,4.0,"Node
+count"
+W/ Infection,T0,Bacteria,BM3,node_count,127.0,"Node
+count"
+W/ Infection,T1,Bacteria,BM3,node_count,128.0,"Node
+count"
+W/ Infection,T2,Bacteria,BM3,node_count,120.0,"Node
+count"
+W/ Infection,T3,Bacteria,BM3,node_count,106.0,"Node
+count"
+W/ Infection,T0,Bacteria,BM4,node_count,88.0,"Node
+count"
+W/ Infection,T1,Bacteria,BM4,node_count,90.0,"Node
+count"
+W/ Infection,T2,Bacteria,BM4,node_count,86.0,"Node
+count"
+W/ Infection,T3,Bacteria,BM4,node_count,85.0,"Node
+count"
+W/O Infection,T0,Bacteria,BM1,node_count,48.0,"Node
+count"
+W/O Infection,T1,Bacteria,BM1,node_count,49.0,"Node
+count"
+W/O Infection,T3,Bacteria,BM1,node_count,43.0,"Node
+count"
+W/O Infection,T0,Bacteria,BM2,node_count,6.0,"Node
+count"
+W/O Infection,T1,Bacteria,BM2,node_count,6.0,"Node
+count"
+W/O Infection,T3,Bacteria,BM2,node_count,6.0,"Node
+count"
+W/O Infection,T0,Bacteria,BM3,node_count,136.0,"Node
+count"
+W/O Infection,T1,Bacteria,BM3,node_count,122.0,"Node
+count"
+W/O Infection,T3,Bacteria,BM3,node_count,111.0,"Node
+count"
+W/O Infection,T0,Bacteria,BM4,node_count,85.0,"Node
+count"
+W/O Infection,T1,Bacteria,BM4,node_count,83.0,"Node
+count"
+W/O Infection,T3,Bacteria,BM4,node_count,87.0,"Node
+count"
+W/ Infection,T0,Fungi,FM1,node_count,5.0,"Node
+count"
+W/ Infection,T1,Fungi,FM1,node_count,5.0,"Node
+count"
+W/ Infection,T2,Fungi,FM1,node_count,5.0,"Node
+count"
+W/ Infection,T3,Fungi,FM1,node_count,5.0,"Node
+count"
+W/ Infection,T0,Fungi,FM2,node_count,13.0,"Node
+count"
+W/ Infection,T1,Fungi,FM2,node_count,14.0,"Node
+count"
+W/ Infection,T2,Fungi,FM2,node_count,9.0,"Node
+count"
+W/ Infection,T3,Fungi,FM2,node_count,8.0,"Node
+count"
+W/O Infection,T0,Fungi,FM1,node_count,5.0,"Node
+count"
+W/O Infection,T1,Fungi,FM1,node_count,5.0,"Node
+count"
+W/O Infection,T3,Fungi,FM1,node_count,5.0,"Node
+count"
+W/O Infection,T0,Fungi,FM2,node_count,15.0,"Node
+count"
+W/O Infection,T1,Fungi,FM2,node_count,10.0,"Node
+count"
+W/O Infection,T3,Fungi,FM2,node_count,12.0,"Node
+count"
+W/ Infection,T0,Bacteria,BM1,transitivity,0.965660447529908,Transitivity
+W/ Infection,T1,Bacteria,BM1,transitivity,0.624593851537116,Transitivity
+W/ Infection,T2,Bacteria,BM1,transitivity,0.939660322608176,Transitivity
+W/ Infection,T3,Bacteria,BM1,transitivity,0.925758005100595,Transitivity
+W/ Infection,T0,Bacteria,BM2,transitivity,0.5625,Transitivity
+W/ Infection,T1,Bacteria,BM2,transitivity,1.0,Transitivity
+W/ Infection,T2,Bacteria,BM2,transitivity,0.6,Transitivity
+W/ Infection,T3,Bacteria,BM2,transitivity,1.0,Transitivity
+W/ Infection,T0,Bacteria,BM3,transitivity,0.61330858203627,Transitivity
+W/ Infection,T1,Bacteria,BM3,transitivity,0.702652740549034,Transitivity
+W/ Infection,T2,Bacteria,BM3,transitivity,0.728943113332353,Transitivity
+W/ Infection,T3,Bacteria,BM3,transitivity,0.701575710991545,Transitivity
+W/ Infection,T0,Bacteria,BM4,transitivity,0.798303531567941,Transitivity
+W/ Infection,T1,Bacteria,BM4,transitivity,0.756405171729991,Transitivity
+W/ Infection,T2,Bacteria,BM4,transitivity,0.815619560945483,Transitivity
+W/ Infection,T3,Bacteria,BM4,transitivity,0.804829212583243,Transitivity
+W/O Infection,T0,Bacteria,BM1,transitivity,0.978728923476005,Transitivity
+W/O Infection,T1,Bacteria,BM1,transitivity,0.9564375,Transitivity
+W/O Infection,T3,Bacteria,BM1,transitivity,0.935579824076828,Transitivity
+W/O Infection,T0,Bacteria,BM2,transitivity,0.652173913043478,Transitivity
+W/O Infection,T1,Bacteria,BM2,transitivity,0.846153846153846,Transitivity
+W/O Infection,T3,Bacteria,BM2,transitivity,0.681818181818182,Transitivity
+W/O Infection,T0,Bacteria,BM3,transitivity,0.652469758064516,Transitivity
+W/O Infection,T1,Bacteria,BM3,transitivity,0.618873445501097,Transitivity
+W/O Infection,T3,Bacteria,BM3,transitivity,0.573188946975355,Transitivity
+W/O Infection,T0,Bacteria,BM4,transitivity,0.922596185144196,Transitivity
+W/O Infection,T1,Bacteria,BM4,transitivity,0.879025638549563,Transitivity
+W/O Infection,T3,Bacteria,BM4,transitivity,0.778574000720202,Transitivity
+W/ Infection,T0,Fungi,FM1,transitivity,0.0,Transitivity
+W/ Infection,T1,Fungi,FM1,transitivity,0.789473684210526,Transitivity
+W/ Infection,T2,Fungi,FM1,transitivity,0.0,Transitivity
+W/ Infection,T3,Fungi,FM1,transitivity,0.0,Transitivity
+W/ Infection,T0,Fungi,FM2,transitivity,0.352941176470588,Transitivity
+W/ Infection,T1,Fungi,FM2,transitivity,1.0,Transitivity
+W/ Infection,T2,Fungi,FM2,transitivity,1.0,Transitivity
+W/ Infection,T3,Fungi,FM2,transitivity,0.75,Transitivity
+W/O Infection,T0,Fungi,FM1,transitivity,0.0,Transitivity
+W/O Infection,T1,Fungi,FM1,transitivity,0.0,Transitivity
+W/O Infection,T3,Fungi,FM1,transitivity,0.0,Transitivity
+W/O Infection,T0,Fungi,FM2,transitivity,0.321428571428571,Transitivity
+W/O Infection,T1,Fungi,FM2,transitivity,0.444444444444444,Transitivity
+W/O Infection,T3,Fungi,FM2,transitivity,0.272727272727273,Transitivity

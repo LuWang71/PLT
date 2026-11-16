@@ -1,0 +1,112 @@
+---
+title: "Figure 3. Microbial networks and topology"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    code_folding: show
+    self_contained: true
+---
+
+Panel A recreates the published network layout from PDF-derived drawing paths and labels. These coordinates are graphical assets, not a node/edge analysis table. Panel B uses the supplied topology summary. Neither panel reconstructs a network from abundance data.
+
+Open this file in RStudio and click **Knit**, or run `rmarkdown::render("fig3/fig3.Rmd")` from the repository root. Tables are read from `data/`; PDF and PNG files are written to `plots/`.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=TRUE, error=FALSE,
+                      fig.width=10, fig.height=6, out.width="100%", dpi=120)
+ggplot2::theme_set(ggplot2::theme_gray())
+dir.create("plots", showWarnings=FALSE)
+```
+
+## Input files
+
+```{r inputs, echo=FALSE}
+knitr::kable(data.frame(File=list.files("data")), col.names="File")
+```
+
+
+## A. Network drawing
+
+```{r figure3-section1}
+library(grid)
+library(ggplot2)
+library(patchwork)
+p<-read.csv("data/figure3A_paths.csv")
+s<-read.csv("data/figure3A_styles.csv",na.strings=c("","NA"))
+t<-read.csv("data/figure3A_labels.csv",check.names=FALSE)
+paths<-split(p,p$Path)
+items<-lapply(seq_len(nrow(s)),function(i){
+ q<-paths[[as.character(s$Path[i])]]
+ stroke<-if(is.na(s$Stroke[i])) NA else scales::alpha(s$Stroke[i],s$StrokeAlpha[i])
+ fill<-if(is.na(s$Fill[i])) NA else scales::alpha(s$Fill[i],s$FillAlpha[i])
+ gp<-gpar(col=stroke,fill=fill,lwd=max(.05,s$Width[i])*96/72,lineend="round",linejoin="round")
+ if(!is.na(fill)) polygonGrob(q$X/510.236,1-q$Y/270,gp=gp) else polylineGrob(q$X/510.236,1-q$Y/270,gp=gp)
+})
+labels<-lapply(seq_len(nrow(t)),function(i) textGrob(t$Text[i],x=t$X[i]/510.236,y=1-t$Y[i]/270,just=c("left","bottom"),gp=gpar(fontsize=t$Size[i],col=t$Color[i],fontface=t$Face[i],fontfamily="Arial")))
+bar<-lapply(1:100,function(i) rectGrob(x=.86+(i-.5)*.0012,y=.55,width=.0013,height=.009,gp=gpar(col=NA,fill=colorRampPalette(c("#DCEAF5","#0066A2"))(100)[i])))
+network_grob<-gTree(children=do.call(gList,c(items,bar,labels)))
+dir.create("plots",showWarnings=FALSE)
+pA<-wrap_elements(full=network_grob)
+ggsave("plots/figure3A.pdf",pA,width=180,height=90,units="mm",device=cairo_pdf,bg="white")
+ggsave("plots/figure3A.png",pA,width=180,height=90,units="mm",device=ragg::agg_png,dpi=300,bg="white")
+```
+
+
+```{r figure3-preview1, echo=FALSE}
+knitr::include_graphics(c("plots/figure3A.png"))
+```
+
+
+## B. Network topology
+
+```{r figure3-section2}
+library(ggplot2)
+library(patchwork)
+d<-read.csv("data/figure3B_topology.csv")
+colours<-c(BM1="#A51C36",BM2="#7ABBDB",BM3="#84BA42",BM4="#682487",FM1="#DBB428",FM2="#D4562E")
+d$Group<-factor(d$Group,levels=c("W/O Infection","W/ Infection"),labels=c("w/o","w/"))
+d$Time<-as.integer(sub("T","",d$Timepoint))
+metrics<-c("assortativity","avg_degree","avg_path_length","density","diameter","edge_count","node_count","transitivity")
+one<-function(metric,kingdom){
+ x<-d[d$Metric==metric & d$Kingdom==kingdom,]
+ ggplot(x,aes(Time,Value,colour=Module,linetype=Group,group=interaction(Module,Group)))+
+ geom_line(linewidth=.35,na.rm=TRUE)+geom_point(size=1,na.rm=TRUE)+
+ scale_colour_manual(values=colours,drop=FALSE)+scale_linetype_manual(values=c("w/o"="dashed","w/"="solid"))+
+ scale_x_continuous(breaks=0:3,labels=paste0("T",0:3))+
+ labs(x=NULL,y=x$MetricLabel[1],title=kingdom)+theme_classic(base_size=7)+
+ theme(panel.border=element_rect(fill=NA,linewidth=.35),axis.line=element_blank(),panel.grid=element_blank(),plot.title=element_text(size=8))
+}
+rows<-lapply(seq_len(4),function(i) wrap_plots(one(metrics[i],"Bacteria"),one(metrics[i],"Fungi"),one(metrics[i+4],"Bacteria"),one(metrics[i+4],"Fungi"),nrow=1))
+pB<-wrap_plots(rows,ncol=1,guides="collect")+plot_annotation(title="Network metrics over time by CAMs")
+dir.create("plots",showWarnings=FALSE)
+ggsave("plots/figure3B.pdf",pB,width=200,height=120,units="mm",device=cairo_pdf)
+ggsave("plots/figure3B.png",pB,width=200,height=120,units="mm",device=ragg::agg_png,dpi=300)
+```
+
+
+```{r figure3-preview2, echo=FALSE}
+knitr::include_graphics(c("plots/figure3B.png"))
+```
+
+
+## Figure assembly
+
+```{r figure3-section3}
+p<-wrap_elements(full=network_grob)/wrap_elements(full=pB)+plot_layout(heights=c(1,1.15))
+ggsave("plots/figure3.pdf",p,width=200,height=215,units="mm",device=cairo_pdf,bg="white")
+ggsave("plots/figure3.png",p,width=200,height=215,units="mm",device=ragg::agg_png,dpi=300,bg="white")
+```
+
+
+```{r figure3-preview3, echo=FALSE}
+knitr::include_graphics(c("plots/figure3.png"))
+```
+
+
+## Session information
+
+```{r session-info}
+sessionInfo()
+```
