@@ -1,0 +1,139 @@
+---
+title: "Figure 2. Co-abundance modules"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    code_folding: show
+    self_contained: true
+---
+
+The supplied correlation matrix, dendrogram segments, module compositions and volcano-plot statistics are used directly. This notebook does not repeat feature selection or correlation testing.
+
+Open this file in RStudio and click **Knit**, or run `rmarkdown::render("fig2/fig2.Rmd")` from the repository root. Tables are read from `data/`; PDF and PNG files are written to `plots/`.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=TRUE, error=FALSE,
+                      fig.width=10, fig.height=6, out.width="100%", dpi=120)
+dir.create("plots", showWarnings=FALSE)
+```
+
+## Input files
+
+```{r inputs, echo=FALSE}
+knitr::kable(data.frame(File=list.files("data")), col.names="File")
+```
+
+
+## A. Correlation heatmap
+
+```{r figure2-section1}
+library(ggplot2)
+library(patchwork)
+read_data <- function(x) read.csv(file.path("data", x), check.names=FALSE)
+dir.create("plots", showWarnings=FALSE)
+cols <- c(BM1="#A51C36", BM2="#7ABBDB", BM3="#84BA42", BM4="#682487", FM1="#DBB428", FM2="#D4562E", FM3="#FFFFB3", FM4="#FCCDE5")
+save_plot <- function(p, name, w, h) {
+ ggsave(file.path("plots",paste0(name,".pdf")),p,width=w,height=h,units="mm",device=cairo_pdf,bg="white")
+ ggsave(file.path("plots",paste0(name,".png")),p,width=w,height=h,units="mm",device=ragg::agg_png,dpi=300,bg="white")
+}
+theme_set(theme_classic(base_size=8)+theme(panel.grid=element_blank(),axis.text=element_text(colour="black")))
+m <- read_data("figure2_modules.csv")
+bac <- rev(m$Genus[grepl("BM",m$Module)])
+fun <- m$Genus[grepl("FM",m$Module)]
+a <- read_data("figure2A_correlations.csv")
+mat <- as.matrix(a[,-1]); rownames(mat)<-a[[1]]
+fun <- fun[fun %in% rownames(mat)]; bac<-bac[bac %in% colnames(mat)]
+d <- expand.grid(x=seq_along(bac),y=seq_along(fun))
+d$r <- as.vector(t(mat[rev(fun),bac]))
+tree <- read_data("figure2A_tree_segments.csv")
+pA <- ggplot(d,aes(x,y,fill=r))+geom_tile(colour="grey65",linewidth=.12)+
+ geom_segment(data=tree,aes(x=x,y=y,xend=xend,yend=yend),inherit.aes=FALSE,linewidth=.25)+
+ scale_fill_gradientn(colours=c("#008CCC","white","#D66A18"),values=scales::rescale(c(-.2,.15,.6)),limits=c(-.2,.6),name="Spearman r")+
+ scale_x_continuous(breaks=seq_along(bac),labels=bac,expand=c(0,0))+
+ scale_y_continuous(breaks=seq_along(fun),labels=rev(fun),position="right",expand=c(0,0))+
+ coord_cartesian(xlim=c(-6,42.5),ylim=c(.5,41.5),clip="off")+
+ labs(x=NULL,y=NULL,title="(A)")+theme(axis.line=element_blank(),axis.ticks=element_blank(),axis.text.x=element_text(angle=90,hjust=1,size=5,face="italic"),axis.text.y=element_text(size=5,face="italic"),legend.position="bottom")
+save_plot(pA,"figure2A",150,130)
+```
+
+
+```{r figure2-preview1, echo=FALSE}
+knitr::include_graphics(c("plots/figure2A.png"))
+```
+
+
+## B–C. Module composition
+
+```{r figure2-section2}
+pies<-read_data("figure2BC_pies.csv"); bars<-read_data("figure2BC_composition.csv")
+pies$Module<-sub("bacteria_","BM",sub("fungi_","FM",pies$Module))
+pies$Color[is.na(pies$Color) | pies$Color==""] <- "grey50"
+pie_col<-setNames(pies$Color,pies$Genus)
+make_composition<-function(kingdom,ncol) {
+ prefix<-if(kingdom=="Bacteria") "BM" else "FM"
+ dd<-pies[startsWith(pies$Module,prefix),]; bb<-bars[bars$Kingdom==kingdom,]
+ pp<-ggplot(dd,aes(x="",y=Percentage,fill=Genus))+geom_col(width=1,colour="white",linewidth=.15)+coord_polar(theta="y")+
+ geom_text(aes(label=ifelse(Percentage>=5,paste0(round(Percentage,1),"%"),"")),position=position_stack(vjust=.5),size=2)+
+ facet_wrap(~Module,ncol=ncol)+scale_fill_manual(values=pie_col)+guides(fill=guide_legend(ncol=2))+theme_void(base_size=7)+theme(legend.position="bottom",legend.key.size=grid::unit(2,"mm"),legend.text=element_text(size=5),legend.title=element_blank(),legend.spacing.y=grid::unit(0,"mm"),strip.text=element_text(size=8))
+ bp<-ggplot(bb,aes(Timepoint,Percent,fill=Module))+geom_col(width=.9)+scale_fill_manual(values=cols)+
+ scale_y_continuous(breaks=seq(0,100,25),labels=function(x)paste0(x,"%"),expand=c(0,0))+labs(x=NULL,y="Relative abundance (%)",fill="CAMs")
+ if(kingdom=="Bacteria") pp/bp+plot_layout(heights=c(2,1)) else (pp|bp)+plot_layout(widths=c(3,1))
+}
+pB<-make_composition("Bacteria",2)+plot_annotation(title="(B)")
+pC<-make_composition("Fungi",4)+plot_annotation(title="(C)")
+save_plot(pB,"figure2B",90,130);save_plot(pC,"figure2C",210,60)
+```
+
+
+```{r figure2-preview2, echo=FALSE}
+knitr::include_graphics(c("plots/figure2B.png", "plots/figure2C.png"))
+```
+
+
+## D. Species comparisons
+
+```{r figure2-section3}
+library(ggrepel)
+v<-read_data("figure2D_volcano.csv")
+v$Y<--log10(v$P);v$Colour<-ifelse(v$Significant,cols[v$Module],"#BEBEBE")
+targets<-list(T0=c("Bacteroides_humanifaecis","Aspergillus_alliaceus","Staphylococcus_epidermidis","Megamonas_funiformis","Enterococcus_faecalis"),T1=c("Blautia_hansenii","Lactobacillus_isalae","Megamonas_funiformis","Malassezia_restricta","Aspergillus_nomiae"),T3=c("Bacteroides_intestinalis","Megamonas_funiformis","Aspergillus_viridinutans","Faecalibacterium_prausnitzii","Bacteroides_ovatus","Mediterraneibacter_gnavus","Malassezia_restricta","Hungatella_hathewayi","Bifidobacterium_pseudocatenulatum"))
+make_volcano<-function(t) {
+ d<-v[v$Comparison==paste0("between_",t),]; lab<-d[d$key %in% targets[[t]],]
+ lab$Label<-paste0(substr(lab$key,1,1),".",sub("^[^_]+_","",lab$key))
+ ggplot(d,aes(log2FC,Y))+geom_hline(yintercept=-log10(.05),colour="blue",linetype="dashed",linewidth=.25)+geom_vline(xintercept=c(-1,1),colour="blue",linetype="dashed",linewidth=.25)+
+ geom_point(aes(colour=Colour,shape=Kingdom),size=1,alpha=.8)+scale_colour_identity()+scale_shape_manual(values=c(Bacteria=16,Fungi=17),guide="none")+
+ geom_text_repel(data=lab,aes(label=Label),seed=41,size=2,fontface="italic",max.overlaps=Inf,min.segment.length=0)+
+ coord_cartesian(xlim=c(-16,11),ylim=c(0,max(8.5,ceiling(max(d$Y)))) )+
+ labs(title=paste("w/o",t,"                         w/",t),x=expression(Log[2]~"(Fold change)"),y=expression(-Log[10]~"(p value)"))+
+ theme(panel.border=element_rect(fill=NA,colour="black",linewidth=.4),axis.line=element_blank(),plot.title=element_text(size=8))
+}
+pD<-wrap_plots(lapply(c("T0","T1","T3"),make_volcano),nrow=1)+plot_annotation(title="(D)")
+save_plot(pD,"figure2D",210,65)
+```
+
+
+```{r figure2-preview3, echo=FALSE}
+knitr::include_graphics(c("plots/figure2D.png"))
+```
+
+
+## Figure assembly
+
+```{r figure2-section4}
+p <- ((wrap_elements(full=pA)|wrap_elements(full=pB))+plot_layout(widths=c(1.8,1)))/wrap_elements(full=pC)/wrap_elements(full=pD)+plot_layout(heights=c(2.2,1,1.15))
+save_plot(p,"figure2",210,255)
+```
+
+
+```{r figure2-preview4, echo=FALSE}
+knitr::include_graphics(c("plots/figure2.png"))
+```
+
+
+## Session information
+
+```{r session-info}
+sessionInfo()
+```
